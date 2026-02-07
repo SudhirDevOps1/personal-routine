@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🚀 1-Year Sigma Grind Plan — Study Dashboard</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--text:#e2e2e8;--muted:#6b6b80;--cyan:#06b6d4;--purple:#a855f7;--pink:#ec4899;--orange:#f97316;--emerald:#10b981;--blue:#3b82f6;--amber:#f59e0b;--red:#ef4444;--indigo:#6366f1}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+a{color:var(--cyan);text-decoration:none}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+
+/* ===== HEADER ===== */
+.header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:12px 16px}
+.header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.header-left{display:flex;align-items:center;gap:10px}
+.header-logo{font-size:28px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.header-title{font-size:18px;font-weight:800;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-sub{font-size:11px;color:var(--muted)}
+.header-badges{display:flex;gap:8px}
+.badge{display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.badge-streak{background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.3);color:var(--orange)}
+.badge-days{background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);color:var(--cyan)}
+
+/* ===== QUOTE BANNER ===== */
+.quote-banner{background:linear-gradient(90deg,rgba(168,85,247,0.12),rgba(236,72,153,0.12),rgba(6,182,212,0.12));border-bottom:1px solid var(--border);padding:8px 16px;text-align:center;font-size:14px;color:var(--text);min-height:36px}
+
+/* ===== TABS ===== */
+.tabs{position:sticky;top:56px;z-index:90;background:rgba(10,10,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:8px 16px}
+.tabs-inner{max-width:900px;margin:0 auto;display:flex;gap:4px;overflow-x:auto}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .3s;background:transparent;color:var(--muted)}
+.tab-btn:hover{color:var(--text);background:#1a1a2e}
+.tab-btn.active{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(6,182,212,0.25)}
+
+/* ===== MAIN ===== */
+.main{max-width:900px;margin:0 auto;padding:20px 16px}
+.section{display:none}.section.active{display:block}
+
+/* ===== CARDS ===== */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px}
+.card-title{font-size:18px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-header{text-align:center;margin-bottom:20px}
+.section-header h2{font-size:22px;font-weight:800;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-header p{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ===== CURRENT ACTIVITY ===== */
+.current-activity{border-radius:16px;padding:24px;position:relative;overflow:hidden;color:#fff;margin-bottom:16px}
+.current-activity .bg-icon{position:absolute;top:-10px;right:-10px;font-size:80px;opacity:.1}
+.current-activity .label{font-size:12px;text-transform:uppercase;letter-spacing:1px;opacity:.7}
+.current-activity h2{font-size:26px;font-weight:800;margin-top:4px}
+.current-activity .detail{font-size:16px;opacity:.8;margin-top:4px}
+.current-activity .time{font-size:13px;opacity:.6;margin-top:8px}
+
+/* ===== STAT GRID ===== */
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+@media(min-width:640px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-card{border-radius:16px;padding:14px;border:1px solid}
+.stat-card .icon{font-size:22px;margin-bottom:4px}
+.stat-card .value{font-size:22px;font-weight:800;color:#fff}
+.stat-card .label{font-size:11px;color:var(--muted)}
+
+/* ===== PROGRESS SUBJECTS ===== */
+.progress-bar-track{width:100%;height:10px;background:#1a1a2e;border-radius:5px;overflow:hidden;margin-bottom:16px}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));border-radius:5px;transition:width .7s ease}
+.subject-grid{display:grid;gap:10px}
+@media(min-width:500px){.subject-grid{grid-template-columns:repeat(2,1fr)}}
+.subject-btn{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;border:2px solid var(--border);background:rgba(26,26,46,0.5);cursor:pointer;transition:all .3s;text-align:left}
+.subject-btn:hover{border-color:#333;background:rgba(26,26,46,0.8)}
+.subject-btn.done{border-color:transparent;color:#fff;transform:scale(1.02);box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.subject-btn .emoji{font-size:26px}
+.subject-btn .name{font-weight:700;font-size:14px;color:var(--text)}
+.subject-btn.done .name{color:#fff}
+.subject-btn .status{font-size:11px;color:var(--muted)}
+.subject-btn.done .status{color:rgba(255,255,255,0.7)}
+
+/* ===== HEATMAP ===== */
+.heatmap{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.heat-cell{aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;transition:all .3s}
+.heat-cell.level-0{background:#1a1a2e;color:#333}
+.heat-cell.level-1{background:linear-gradient(135deg,var(--amber),var(--orange));color:#fff}
+.heat-cell.level-2{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff}
+.heat-cell.level-3{background:linear-gradient(135deg,var(--emerald),#22c55e);color:#fff;box-shadow:0 4px 12px rgba(16,185,129,0.3)}
+.heat-label{text-align:center;font-size:11px;color:var(--muted);margin-top:4px}
+.legend{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:11px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:4px}
+.legend .dot{width:12px;height:12px;border-radius:4px}
+
+/* ===== STUDY HOURS ===== */
+.hours-item{margin-bottom:10px}
+.hours-item .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.hours-item .lbl{color:#ccc}
+.hours-item .hrs{color:var(--muted)}
+.hours-bar{width:100%;height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden}
+.hours-fill{height:100%;border-radius:4px}
+.hours-total{text-align:center;margin-top:16px}
+.hours-total .big{font-size:24px;font-weight:800;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hours-total p{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ===== ROUTINE ===== */
+.routine-item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;border:2px solid var(--border);margin-bottom:8px;transition:all .3s;position:relative}
+.routine-item:hover{border-color:#333}
+.routine-item.now{border-color:transparent;color:#fff;transform:scale(1.02);box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.routine-item .now-bar{position:absolute;left:-2px;top:50%;transform:translateY(-50%);width:4px;height:28px;background:#fff;border-radius:2px;animation:pulse 1.5s infinite}
+.routine-item .emoji{font-size:30px;flex-shrink:0}
+.routine-item .info{flex-grow;min-width:0}
+.routine-item .act{font-size:16px;font-weight:700}
+.routine-item .time-label{font-size:12px;font-family:monospace;color:var(--muted)}
+.routine-item.now .time-label{color:rgba(255,255,255,0.7)}
+.routine-item .det{font-size:12px;color:var(--muted);margin-top:2px}
+.routine-item.now .det{color:rgba(255,255,255,0.7)}
+.now-badge{flex-shrink:0;background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#fff;animation:pulse 1.5s infinite}
+
+/* ===== ROADMAP ===== */
+.phase-card{border-radius:16px;overflow:hidden;margin-bottom:12px;border:1px solid var(--border);background:var(--card)}
+.phase-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;color:#fff;transition:all .3s}
+.phase-header:hover{filter:brightness(1.1)}
+.phase-header .left{display:flex;align-items:center;gap:12px}
+.phase-header .left .phase-emoji{font-size:28px}
+.phase-header .left h3{font-size:18px;font-weight:700}
+.phase-header .left .months{font-size:12px;opacity:.7}
+.phase-header .arrow{font-size:20px;transition:transform .3s;opacity:.7}
+.phase-header .arrow.open{transform:rotate(180deg)}
+.phase-body{padding:0 20px 20px;display:none}
+.phase-body.open{display:block}
+.phase-topic{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(26,26,46,0.6);border-radius:10px;margin-bottom:8px}
+.phase-topic .topic-emoji{font-size:18px;margin-top:2px}
+.phase-topic .topic-sub{font-weight:700;font-size:13px;color:#ddd}
+.phase-topic .topic-det{font-size:12px;color:var(--muted)}
+
+.resource-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(max-width:500px){.resource-grid{grid-template-columns:1fr}}
+.resource-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(26,26,46,0.6);border-radius:10px}
+.resource-item .r-emoji{font-size:22px}
+.resource-item .r-cat{font-weight:700;font-size:12px;color:#ddd}
+.resource-item .r-tools{font-size:11px;color:var(--muted)}
+
+/* ===== TASKS ===== */
+.task-input-row{display:flex;gap:10px;margin-bottom:16px}
+.task-input{flex-grow;padding:12px 16px;background:#1a1a2e;border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:14px;outline:none;transition:border .3s}
+.task-input:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(6,182,212,0.15)}
+.task-input::placeholder{color:#444}
+.task-add-btn{padding:12px 24px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;border:none;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;transition:all .3s;white-space:nowrap}
+.task-add-btn:hover{box-shadow:0 4px 16px rgba(6,182,212,0.3);transform:translateY(-1px)}
+.task-add-btn:active{transform:scale(0.97)}
+.task-progress{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.task-progress .bar{flex-grow;height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden}
+.task-progress .fill{height:100%;background:linear-gradient(90deg,var(--emerald),#22c55e);border-radius:4px;transition:width .5s}
+.task-progress .count{font-size:13px;color:var(--muted);white-space:nowrap}
+.task-item{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);margin-bottom:6px;transition:all .3s}
+.task-item.done{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.3)}
+.task-check{width:24px;height:24px;border-radius:8px;border:2px solid #444;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;flex-shrink:0;font-size:12px;color:transparent;background:transparent}
+.task-check:hover{border-color:var(--cyan)}
+.task-item.done .task-check{background:var(--emerald);border-color:var(--emerald);color:#fff}
+.task-text{flex-grow;font-size:14px;color:var(--text);transition:all .3s}
+.task-item.done .task-text{color:var(--muted);text-decoration:line-through}
+.task-del{background:none;border:none;color:#444;font-size:16px;cursor:pointer;padding:4px;transition:color .3s;flex-shrink:0}
+.task-del:hover{color:var(--red)}
+.empty-state{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty-state .big-emoji{font-size:48px;margin-bottom:10px}
+
+/* ===== RULES ===== */
+.rules-grid{display:grid;gap:12px}
+@media(min-width:500px){.rules-grid{grid-template-columns:repeat(2,1fr)}}
+.rule-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;transition:all .3s;cursor:default}
+.rule-card:hover{border-color:#333;transform:scale(1.02);box-shadow:0 4px 16px rgba(0,0,0,0.3)}
+.rule-card .top{display:flex;align-items:flex-start;gap:10px}
+.rule-card .rule-emoji{font-size:28px;flex-shrink:0}
+.rule-card .rule-text{font-size:13px;font-weight:600;color:#ddd;line-height:1.5}
+.rule-card .line{width:40px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:2px;margin-top:10px}
+
+/* ===== TABLE ===== */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{padding:8px 10px;text-align:center;color:var(--muted);border-bottom:1px solid var(--border);font-weight:600}
+th:first-child{text-align:left}
+td{padding:8px 10px;text-align:center;color:var(--muted);border-bottom:1px solid rgba(30,30,46,0.5)}
+td:first-child{text-align:left;color:#ccc;font-weight:600}
+
+/* ===== MOTIVATION BOX ===== */
+.motivation-box{background:linear-gradient(135deg,var(--purple),var(--pink),var(--cyan));border-radius:16px;padding:32px;text-align:center;color:#fff;margin-top:16px;box-shadow:0 8px 32px rgba(168,85,247,0.3)}
+.motivation-box .wolf{font-size:48px;margin-bottom:12px}
+.motivation-box h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.motivation-box p{font-size:15px;opacity:.85;max-width:500px;margin:0 auto;line-height:1.7}
+.motivation-box .emojis{font-size:32px;margin-top:12px}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+
+/* ===== README ===== */
+.readme-section{margin-bottom:16px}
+.readme-section h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--cyan)}
+.readme-section ul{list-style:none;padding:0}
+.readme-section li{padding:4px 0;font-size:13px;color:#bbb}
+.readme-section li::before{content:'• ';color:var(--purple)}
+
+/* ===== GRADIENT HELPERS ===== */
+.grad-yellow-orange{background:linear-gradient(135deg,#facc15,#f97316)}
+.grad-orange-red{background:linear-gradient(135deg,#f97316,#ef4444)}
+.grad-red-pink{background:linear-gradient(135deg,#ef4444,#ec4899)}
+.grad-pink-purple{background:linear-gradient(135deg,#ec4899,#a855f7)}
+.grad-purple-indigo{background:linear-gradient(135deg,#a855f7,#6366f1)}
+.grad-indigo-blue{background:linear-gradient(135deg,#6366f1,#3b82f6)}
+.grad-blue-cyan{background:linear-gradient(135deg,#3b82f6,#06b6d4)}
+.grad-cyan-teal{background:linear-gradient(135deg,#06b6d4,#14b8a6)}
+.grad-teal-emerald{background:linear-gradient(135deg,#14b8a6,#10b981)}
+.grad-emerald-green{background:linear-gradient(135deg,#10b981,#22c55e)}
+.grad-green-lime{background:linear-gradient(135deg,#22c55e,#84cc16)}
+.grad-lime-yellow{background:linear-gradient(135deg,#84cc16,#facc15)}
+.grad-yellow-amber{background:linear-gradient(135deg,#facc15,#f59e0b)}
+.grad-amber-orange{background:linear-gradient(135deg,#f59e0b,#f97316)}
+.grad-indigo-slate{background:linear-gradient(135deg,#4f46e5,#334155)}
+
+.grad-phase1{background:linear-gradient(135deg,#3b82f6,#06b6d4)}
+.grad-phase2{background:linear-gradient(135deg,#a855f7,#ec4899)}
+.grad-phase3{background:linear-gradient(135deg,#f97316,#ef4444)}
+.grad-phase4{background:linear-gradient(135deg,#eab308,#f59e0b)}
+
+.stat-emerald{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3)}
+.stat-orange{background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.3)}
+.stat-blue{background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.3)}
+.stat-purple{background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.3)}
+
+@media(max-width:480px){
+  .header-title{font-size:15px}
+  .current-activity h2{font-size:20px}
+  .tab-btn{padding:6px 10px;font-size:12px}
+  .tab-btn .tab-text{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-logo">🚀</div>
+      <div>
+        <div class="header-title">1-Year Sigma Grind Plan</div>
+        <div class="header-sub">BCA Student — DSA + Web Dev + AI/ML + English</div>
+      </div>
+    </div>
+    <div class="header-badges">
+      <div class="badge badge-streak">🔥 <span id="streak-badge">0</span> day streak</div>
+      <div class="badge badge-days">⏳ <span id="days-badge">365</span> days left</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner" id="quote-banner">💡 Loading...</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="dashboard">📊 <span class="tab-text">Dashboard</span></button>
+    <button class="tab-btn" data-tab="routine">⏰ <span class="tab-text">Daily Routine</span></button>
+    <button class="tab-btn" data-tab="roadmap">🗺️ <span class="tab-text">12-Month Plan</span></button>
+    <button class="tab-btn" data-tab="tasks">✅ <span class="tab-text">Tasks</span></button>
+    <button class="tab-btn" data-tab="rules">📌 <span class="tab-text">Rules</span></button>
+    <button class="tab-btn" data-tab="readme">📄 <span class="tab-text">README</span></button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- ========== DASHBOARD ========== -->
+  <div class="section active" id="sec-dashboard">
+    <div class="current-activity" id="current-activity"></div>
+    <div class="stat-grid" id="stat-grid"></div>
+    <div class="card">
+      <div class="card-title">📋 Aaj Ka Progress — Mark Karo ✅</div>
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="subject-grid" id="subject-grid"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Last 7 Days Activity</div>
+      <div class="heatmap" id="heatmap"></div>
+      <div class="legend">
+        <span><span class="dot" style="background:#1a1a2e"></span> 0</span>
+        <span><span class="dot" style="background:linear-gradient(135deg,var(--amber),var(--orange))"></span> 1-2</span>
+        <span><span class="dot" style="background:linear-gradient(135deg,var(--cyan),var(--blue))"></span> 3-4</span>
+        <span><span class="dot" style="background:linear-gradient(135deg,var(--emerald),#22c55e)"></span> 5</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">⏱️ Daily Study Hours Breakdown</div>
+      <div id="hours-chart"></div>
+      <div class="hours-total">
+        <div class="big">~10.75 Hours / Day 🔥</div>
+        <p>Productive Study Time (excluding meals, travel, sleep)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ROUTINE ========== -->
+  <div class="section" id="sec-routine">
+    <div class="section-header">
+      <h2>⏰ Daily Routine — Full Day Schedule</h2>
+      <p>6 AM se 11 PM tak — Har minute ka plan hai! 💪</p>
+    </div>
+    <div id="routine-list"></div>
+  </div>
+
+  <!-- ========== ROADMAP ========== -->
+  <div class="section" id="sec-roadmap">
+    <div class="section-header">
+      <h2>🗺️ 12-Month Complete Roadmap</h2>
+      <p>Phase-wise plan — Foundation se Mastery tak! 🏆</p>
+    </div>
+    <div id="roadmap-list"></div>
+    <div class="card">
+      <div class="card-title">🛠️ Tools & Resources</div>
+      <div class="resource-grid" id="resource-grid"></div>
+    </div>
+  </div>
+
+  <!-- ========== TASKS ========== -->
+  <div class="section" id="sec-tasks">
+    <div class="section-header">
+      <h2>✅ Task Manager — Aaj Kya Karna Hai</h2>
+      <p>Tasks likho, complete karo, delete karo! 📝</p>
+    </div>
+    <div class="card">
+      <div class="task-input-row">
+        <input type="text" class="task-input" id="task-input" placeholder="Naya task likho... e.g. LeetCode 3 problems solve karo"/>
+        <button class="task-add-btn" id="task-add-btn">+ Add</button>
+      </div>
+      <div class="task-progress" id="task-progress" style="display:none">
+        <div class="bar"><div class="fill" id="task-fill"></div></div>
+        <div class="count" id="task-count"></div>
+      </div>
+      <div id="task-list"></div>
+    </div>
+  </div>
+
+  <!-- ========== RULES ========== -->
+  <div class="section" id="sec-rules">
+    <div class="section-header">
+      <h2>📌 Sigma Rules — Pakka Follow Karna!</h2>
+      <p>Ye rules follow karoge toh success guaranteed hai! 💯</p>
+    </div>
+    <div class="rules-grid" id="rules-grid"></div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">🎯 Weekly Targets</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="text-align:left">Day</th><th style="color:var(--cyan)">💻 DSA</th><th style="color:var(--emerald)">🌐 Web</th><th style="color:var(--purple)">🤖 AI/ML</th><th style="color:var(--orange)">🗣️ Eng</th></tr></thead>
+          <tbody id="weekly-table"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="motivation-box">
+      <div class="wolf">🐺</div>
+      <h3>SIGMA MINDSET</h3>
+      <p>"1 saal bahut hota hai agar tu consistent rahe. Roz 10-12 ghante dega toh 1 saal mein tu job-ready ban jayega. DSA se placement, Web Dev se freelancing, AI/ML se future, aur English se confidence aayega. BAS LAGE RAHO!"</p>
+      <div class="emojis">🔥💪🚀</div>
+    </div>
+  </div>
+
+  <!-- ========== README ========== -->
+  <div class="section" id="sec-readme">
+    <div class="section-header">
+      <h2>📄 README.md — Full Plan</h2>
+      <p>Tera complete 1-year grind plan yahan hai bhai! 📋</p>
+    </div>
+    <div id="readme-content"></div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">Made with ❤️ for the Sigma Grind | Stay Focused, Stay Hungry! 🐺</div>
+
+<script>
+// ===================== DATA =====================
+const schedule = [
+  {time:"6:00 - 7:00 AM",icon:"☀️",activity:"Morning Routine",detail:"Uthna, Snan, Fresh Hona",grad:"grad-yellow-orange",sh:6,eh:7},
+  {time:"7:00 - 8:00 AM",icon:"🍳",activity:"Nashta + Kitchen",detail:"Khana Banana, Khana, Clean",grad:"grad-orange-red",sh:7,eh:8},
+  {time:"8:00 - 9:30 AM",icon:"🧹",activity:"Ready Hona",detail:"Cleaning + College Ready",grad:"grad-red-pink",sh:8,eh:9.5},
+  {time:"9:30 - 10:00 AM",icon:"🚶",activity:"Travel",detail:"Library / College Jaana",grad:"grad-pink-purple",sh:9.5,eh:10},
+  {time:"10:00 - 2:00 PM",icon:"🎓",activity:"College (BCA)",detail:"Lectures + Practicals (jab ho tab, warna Library)",grad:"grad-purple-indigo",sh:10,eh:14},
+  {time:"2:00 - 2:30 PM",icon:"🍛",activity:"Lunch Break",detail:"Quick Lunch + Rest",grad:"grad-indigo-blue",sh:14,eh:14.5},
+  {time:"2:30 - 5:00 PM",icon:"💻",activity:"DSA (Java/C++)",detail:"Sigma 9 — Apna College Course",grad:"grad-blue-cyan",sh:14.5,eh:17},
+  {time:"5:00 - 5:15 PM",icon:"☕",activity:"Chai Break",detail:"15 min Relax",grad:"grad-cyan-teal",sh:17,eh:17.25},
+  {time:"5:15 - 7:30 PM",icon:"🌐",activity:"Web Development",detail:"HTML/CSS/JS/React/Node/MongoDB",grad:"grad-teal-emerald",sh:17.25,eh:19.5},
+  {time:"7:30 - 8:00 PM",icon:"🗣️",activity:"English Practice",detail:"Reading + Speaking + Notes",grad:"grad-emerald-green",sh:19.5,eh:20},
+  {time:"8:00 - 9:00 PM",icon:"🤖",activity:"AI/ML (Python)",detail:"Prime Batch — Apna College",grad:"grad-green-lime",sh:20,eh:21},
+  {time:"9:00 - 9:30 PM",icon:"🍛",activity:"Dinner",detail:"Khana Banana + Khana",grad:"grad-lime-yellow",sh:21,eh:21.5},
+  {time:"9:30 - 10:00 PM",icon:"📝",activity:"Revision + Notes",detail:"Din Bhar Ka Revise Karo",grad:"grad-yellow-amber",sh:21.5,eh:22},
+  {time:"10:00 - 11:00 PM",icon:"📱",activity:"Free / College Work",detail:"Assignments, Relax, Coding Practice",grad:"grad-amber-orange",sh:22,eh:23},
+  {time:"11:00 PM - 6:00 AM",icon:"😴",activity:"SLEEP",detail:"7 Ghante Neend — Zaruri Hai!",grad:"grad-indigo-slate",sh:23,eh:30}
+];
+
+const phases = [
+  {title:"Phase 1: Foundation",months:"Month 1-3",emoji:"🏗️",grad:"grad-phase1",items:[
+    {sub:"DSA (Java/C++)",emoji:"💻",topics:"Arrays, Strings, Sorting, Searching, Recursion, Backtracking"},
+    {sub:"Web Dev",emoji:"🌐",topics:"HTML, CSS, JavaScript Basics, DOM Manipulation"},
+    {sub:"Python/AI-ML",emoji:"🤖",topics:"Basics, Data Types, Loops, Functions, OOP"},
+    {sub:"English",emoji:"🗣️",topics:"Daily 30 min reading + 10 new words daily"},
+    {sub:"College",emoji:"🎓",topics:"Regular attendance + assignments on time"}
+  ]},
+  {title:"Phase 2: Intermediate",months:"Month 4-6",emoji:"⚡",grad:"grad-phase2",items:[
+    {sub:"DSA (Java/C++)",emoji:"💻",topics:"Linked List, Stack, Queue, Trees, Binary Trees, BST"},
+    {sub:"Web Dev",emoji:"🌐",topics:"React.js, Tailwind CSS, Git/GitHub, APIs"},
+    {sub:"Python/AI-ML",emoji:"🤖",topics:"NumPy, Pandas, Matplotlib, Basic ML concepts"},
+    {sub:"English",emoji:"🗣️",topics:"Paragraph writing, basic conversations, grammar"},
+    {sub:"College",emoji:"🎓",topics:"Mid-sem prep + practicals"}
+  ]},
+  {title:"Phase 3: Advanced",months:"Month 7-9",emoji:"🔥",grad:"grad-phase3",items:[
+    {sub:"DSA (Java/C++)",emoji:"💻",topics:"Graphs, DP (Dynamic Programming), Greedy, Heaps, Tries"},
+    {sub:"Web Dev",emoji:"🌐",topics:"Node.js, Express.js, MongoDB, Full Stack Projects"},
+    {sub:"AI/ML",emoji:"🤖",topics:"Supervised/Unsupervised Learning, Sklearn, Projects"},
+    {sub:"English",emoji:"🗣️",topics:"Mock interviews, group discussions, presentations"},
+    {sub:"College",emoji:"🎓",topics:"End-sem prep"}
+  ]},
+  {title:"Phase 4: Mastery + Projects",months:"Month 10-12",emoji:"🏆",grad:"grad-phase4",items:[
+    {sub:"DSA (Java/C++)",emoji:"💻",topics:"Contest practice (LeetCode, Codeforces), Company-wise problems"},
+    {sub:"Web Dev",emoji:"🌐",topics:"3-4 Full Stack Projects, Portfolio Website, Deploy"},
+    {sub:"AI/ML",emoji:"🤖",topics:"Deep Learning basics, Final Project, Resume add"},
+    {sub:"English",emoji:"🗣️",topics:"Fluent speaking, interview prep, HR questions"},
+    {sub:"College",emoji:"🎓",topics:"Final exams + project submission"}
+  ]}
+];
+
+const subjects = [
+  {key:"dsa",label:"DSA (Java/C++)",icon:"💻",grad:"grad-blue-cyan"},
+  {key:"webdev",label:"Web Development",icon:"🌐",grad:"grad-teal-emerald"},
+  {key:"aiml",label:"AI/ML (Python)",icon:"🤖",grad:"grad-pink-purple"},
+  {key:"english",label:"English Comm.",icon:"🗣️",grad:"grad-orange-red"},
+  {key:"college",label:"College (BCA)",icon:"🎓",grad:"grad-purple-indigo"}
+];
+
+const sigmaRules = [
+  {icon:"📵",text:"Phone band karo study time mein — Focus mode ON"},
+  {icon:"⏱️",text:"Pomodoro: 50 min study, 10 min break"},
+  {icon:"📝",text:"Daily Notes banao — Handwritten ya Digital"},
+  {icon:"💪",text:"Consistency > Intensity — Roz thoda karo"},
+  {icon:"📊",text:"Weekly Review — Har Sunday check karo progress"},
+  {icon:"😴",text:"7 hours sleep minimum — Dimag fresh rakhna hai"},
+  {icon:"🏃",text:"Health matter karta hai — Walk/Exercise karo"},
+  {icon:"📈",text:"Track Progress — Daily update karo"}
+];
+
+const quotes = [
+  "1 saal bahut hota hai agar tu consistent rahe! 🔥",
+  "Roz 10-12 ghante dega toh job-ready ban jayega! 💪",
+  "DSA se placement, Web Dev se freelancing, AI/ML se future! 🚀",
+  "Sapne wo nahi jo neend mein aaye, sapne wo hain jo neend uda de! ⭐",
+  "Mehnat itni khamoshi se karo ki success shor macha de! 🏆",
+  "Aaj ka din kal wapas nahi aayega — Use it wisely! ⏰",
+  "Sigma mindset: No excuses, only results! 🐺",
+  "Coding practice daily karo — ek din nahi chhodna! 💻",
+  "English roz bolo — sharmana band karo! 🗣️",
+  "BAS LAGE RAHO! Tera time aayega! 🔥🔥🔥"
+];
+
+const studyHours = [
+  {label:"DSA (Java/C++)",hours:2.5,max:3,grad:"grad-blue-cyan"},
+  {label:"Web Development",hours:2.25,max:3,grad:"grad-teal-emerald"},
+  {label:"AI/ML (Python)",hours:1,max:3,grad:"grad-pink-purple"},
+  {label:"English Comm.",hours:0.5,max:3,grad:"grad-orange-red"},
+  {label:"College (BCA)",hours:4,max:5,grad:"grad-purple-indigo"},
+  {label:"Revision + Notes",hours:0.5,max:3,grad:"grad-yellow-amber"}
+];
+
+const resources = [
+  {cat:"DSA",tools:"LeetCode, GFG, Codeforces, Apna College",icon:"💻"},
+  {cat:"Web Dev",tools:"VS Code, GitHub, Vercel, Netlify",icon:"🌐"},
+  {cat:"AI/ML",tools:"Google Colab, Jupyter, Kaggle",icon:"🤖"},
+  {cat:"English",tools:"Grammarly, Dictionary, YouTube",icon:"🗣️"},
+  {cat:"Notes",tools:"Obsidian, Notion, Physical Notebook",icon:"📝"},
+  {cat:"Focus",tools:"Forest App, Pomodoro Timer",icon:"🎯"}
+];
+
+const weekDays = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+// ===================== STATE =====================
+function getToday(){return new Date().toISOString().split('T')[0]}
+function loadJSON(key,def){try{const d=localStorage.getItem(key);return d?JSON.parse(d):def}catch(e){return def}}
+function saveJSON(key,val){localStorage.setItem(key,JSON.stringify(val))}
+
+let progress = loadJSON('sigma-progress',[]);
+let tasks = loadJSON('sigma-tasks',[]);
+let quoteIdx = 0;
+
+// ===================== HELPERS =====================
+function getCurrentSlot(){
+  const now=new Date();const t=now.getHours()+now.getMinutes()/60;
+  for(let i=0;i<schedule.length;i++){
+    const s=schedule[i];
+    if(s.eh<=24){if(t>=s.sh&&t<s.eh)return i}
+    else{if(t>=s.sh||t<s.eh-24)return i}
+  }
+  return schedule.length-1;
+}
+
+function getTodayProgress(){
+  const today=getToday();
+  return progress.find(p=>p.date===today)||{date:today,dsa:false,webdev:false,aiml:false,english:false,college:false};
+}
+
+function getStreak(){
+  if(!progress.length)return 0;
+  let streak=0;const today=new Date();
+  for(let i=0;i<400;i++){
+    const d=new Date(today);d.setDate(d.getDate()-i);
+    const ds=d.toISOString().split('T')[0];
+    const p=progress.find(x=>x.date===ds);
+    if(p&&(p.dsa||p.webdev||p.aiml||p.english||p.college)){streak++}else{break}
+  }
+  return streak;
+}
+
+function getDaysLeft(){
+  const start=loadJSON('sigma-start',getToday());
+  if(!localStorage.getItem('sigma-start'))saveJSON('sigma-start',getToday());
+  const end=new Date(start);end.setFullYear(end.getFullYear()+1);
+  const diff=Math.ceil((end-new Date())/(1000*60*60*24));
+  return Math.max(0,diff);
+}
+
+// ===================== RENDER FUNCTIONS =====================
+
+function renderQuote(){
+  document.getElementById('quote-banner').innerHTML='💡 '+quotes[quoteIdx];
+  quoteIdx=(quoteIdx+1)%quotes.length;
+}
+
+function renderBadges(){
+  document.getElementById('streak-badge').textContent=getStreak();
+  document.getElementById('days-badge').textContent=getDaysLeft();
+}
+
+function renderCurrentActivity(){
+  const idx=getCurrentSlot();const s=schedule[idx];
+  document.getElementById('current-activity').className='current-activity '+s.grad;
+  document.getElementById('current-activity').innerHTML=`
+    <div class="bg-icon">${s.icon}</div>
+    <div style="position:relative;z-index:1">
+      <div class="label">Abhi Kya Karna Hai</div>
+      <h2>${s.icon} ${s.activity}</h2>
+      <div class="detail">${s.detail}</div>
+      <div class="time">⏰ ${s.time}</div>
+    </div>`;
+}
+
+function renderStats(){
+  const tp=getTodayProgress();
+  const done=[tp.dsa,tp.webdev,tp.aiml,tp.english,tp.college].filter(Boolean).length;
+  const pct=Math.round((done/5)*100);
+  document.getElementById('stat-grid').innerHTML=`
+    <div class="stat-card stat-emerald"><div class="icon">✅</div><div class="value">${done}/5</div><div class="label">Aaj Complete</div></div>
+    <div class="stat-card stat-orange"><div class="icon">🔥</div><div class="value">${getStreak()}</div><div class="label">Day Streak</div></div>
+    <div class="stat-card stat-blue"><div class="icon">📅</div><div class="value">${progress.length}</div><div class="label">Total Days</div></div>
+    <div class="stat-card stat-purple"><div class="icon">📊</div><div class="value">${pct}%</div><div class="label">Progress</div></div>`;
+}
+
+function renderSubjects(){
+  const tp=getTodayProgress();
+  const done=[tp.dsa,tp.webdev,tp.aiml,tp.english,tp.college].filter(Boolean).length;
+  document.getElementById('progress-fill').style.width=(done/5*100)+'%';
+  
+  const grid=document.getElementById('subject-grid');
+  grid.innerHTML='';
+  subjects.forEach(s=>{
+    const isDone=tp[s.key];
+    const btn=document.createElement('div');
+    btn.className='subject-btn'+(isDone?' done '+s.grad:'');
+    btn.innerHTML=`<div class="emoji">${s.icon}</div><div><div class="name">${s.label}</div><div class="status">${isDone?'✅ Done!':'Tap to mark done'}</div></div>`;
+    btn.onclick=()=>toggleSubject(s.key);
+    grid.appendChild(btn);
+  });
+}
+
+function toggleSubject(key){
+  const today=getToday();
+  let tp=progress.find(p=>p.date===today);
+  if(tp){tp[key]=!tp[key]}
+  else{tp={date:today,dsa:false,webdev:false,aiml:false,english:false,college:false};tp[key]=true;progress.push(tp)}
+  saveJSON('sigma-progress',progress);
+  renderSubjects();renderStats();renderBadges();renderHeatmap();
+}
+
+function renderHeatmap(){
+  const hm=document.getElementById('heatmap');hm.innerHTML='';
+  for(let i=6;i>=0;i--){
+    const d=new Date();d.setDate(d.getDate()-i);
+    const ds=d.toISOString().split('T')[0];
+    const p=progress.find(x=>x.date===ds);
+    const cnt=p?[p.dsa,p.webdev,p.aiml,p.english,p.college].filter(Boolean).length:0;
+    const level=cnt===5?3:cnt>=3?2:cnt>=1?1:0;
+    const dayName=d.toLocaleDateString('en',{weekday:'short'});
+    hm.innerHTML+=`<div><div class="heat-cell level-${level}">${cnt}</div><div class="heat-label">${dayName}</div></div>`;
+  }
+}
+
+function renderHours(){
+  const el=document.getElementById('hours-chart');el.innerHTML='';
+  studyHours.forEach(h=>{
+    el.innerHTML+=`<div class="hours-item"><div class="row"><span class="lbl">${h.label}</span><span class="hrs">${h.hours} hrs</span></div><div class="hours-bar"><div class="hours-fill ${h.grad}" style="width:${h.hours/h.max*100}%"></div></div></div>`;
+  });
+}
+
+function renderRoutine(){
+  const list=document.getElementById('routine-list');list.innerHTML='';
+  const idx=getCurrentSlot();
+  schedule.forEach((s,i)=>{
+    const isNow=i===idx;
+    const div=document.createElement('div');
+    div.className='routine-item'+(isNow?' now '+s.grad:'');
+    div.innerHTML=`
+      ${isNow?'<div class="now-bar"></div>':''}
+      <div class="emoji">${s.icon}</div>
+      <div class="info">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+          <div class="act">${s.activity}</div>
+          <div class="time-label">${s.time}</div>
+        </div>
+        <div class="det">${s.detail}</div>
+      </div>
+      ${isNow?'<div class="now-badge">NOW</div>':''}`;
+    list.appendChild(div);
+  });
+}
+
+function renderRoadmap(){
+  const list=document.getElementById('roadmap-list');list.innerHTML='';
+  phases.forEach((phase,idx)=>{
+    const card=document.createElement('div');card.className='phase-card';
+    const header=document.createElement('div');
+    header.className='phase-header '+phase.grad;
+    header.innerHTML=`<div class="left"><div class="phase-emoji">${phase.emoji}</div><div><h3>${phase.title}</h3><div class="months">${phase.months}</div></div></div><div class="arrow" id="arrow-${idx}">▼</div>`;
+    const body=document.createElement('div');body.className='phase-body';body.id='phase-body-'+idx;
+    if(idx===0)body.classList.add('open');
+    if(idx===0)header.querySelector('.arrow').classList.add('open');
+    phase.items.forEach(item=>{
+      body.innerHTML+=`<div class="phase-topic"><div class="topic-emoji">${item.emoji}</div><div><div class="topic-sub">${item.sub}</div><div class="topic-det">${item.topics}</div></div></div>`;
+    });
+    header.onclick=()=>{
+      const b=document.getElementById('phase-body-'+idx);
+      const a=document.getElementById('arrow-'+idx);
+      b.classList.toggle('open');a.classList.toggle('open');
+    };
+    card.appendChild(header);card.appendChild(body);list.appendChild(card);
+  });
+}
+
+function renderResources(){
+  const grid=document.getElementById('resource-grid');grid.innerHTML='';
+  resources.forEach(r=>{
+    grid.innerHTML+=`<div class="resource-item"><div class="r-emoji">${r.icon}</div><div><div class="r-cat">${r.cat}</div><div class="r-tools">${r.tools}</div></div></div>`;
+  });
+}
+
+function renderTasks(){
+  const list=document.getElementById('task-list');list.innerHTML='';
+  const doneCount=tasks.filter(t=>t.done).length;
+  const prog=document.getElementById('task-progress');
+  if(tasks.length>0){
+    prog.style.display='flex';
+    document.getElementById('task-fill').style.width=(doneCount/tasks.length*100)+'%';
+    document.getElementById('task-count').textContent=doneCount+'/'+tasks.length+' done';
+  }else{
+    prog.style.display='none';
+  }
+  if(tasks.length===0){
+    list.innerHTML='<div class="empty-state"><div class="big-emoji">📝</div><div style="font-size:16px">Koi task nahi hai abhi!</div><div style="font-size:13px;margin-top:4px">Upar se naya task add karo</div></div>';
+    return;
+  }
+  tasks.forEach(task=>{
+    const div=document.createElement('div');
+    div.className='task-item'+(task.done?' done':'');
+    div.innerHTML=`
+      <div class="task-check" data-id="${task.id}">${task.done?'✓':''}</div>
+      <div class="task-text">${escapeHtml(task.text)}</div>
+      <button class="task-del" data-id="${task.id}">✕</button>`;
+    div.querySelector('.task-check').onclick=()=>{toggleTask(task.id)};
+    div.querySelector('.task-del').onclick=()=>{deleteTask(task.id)};
+    list.appendChild(div);
+  });
+}
+
+function addTask(){
+  const input=document.getElementById('task-input');
+  const text=input.value.trim();if(!text)return;
+  tasks.push({id:Date.now().toString(),text,done:false});
+  saveJSON('sigma-tasks',tasks);input.value='';renderTasks();
+}
+function toggleTask(id){
+  const t=tasks.find(x=>x.id===id);if(t)t.done=!t.done;
+  saveJSON('sigma-tasks',tasks);renderTasks();
+}
+function deleteTask(id){
+  tasks=tasks.filter(x=>x.id!==id);
+  saveJSON('sigma-tasks',tasks);renderTasks();
+}
+function escapeHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+function renderRules(){
+  const grid=document.getElementById('rules-grid');grid.innerHTML='';
+  sigmaRules.forEach(r=>{
+    grid.innerHTML+=`<div class="rule-card"><div class="top"><div class="rule-emoji">${r.icon}</div><div class="rule-text">${r.text}</div></div><div class="line"></div></div>`;
+  });
+}
+
+function renderWeeklyTable(){
+  const tbody=document.getElementById('weekly-table');tbody.innerHTML='';
+  weekDays.forEach(day=>{
+    const isWE=day==='Sat'||day==='Sun';
+    tbody.innerHTML+=`<tr><td>${day}</td><td>${isWE?'Contest':'2-3 probs'}</td><td>${isWE?'Project':'2 hrs'}</td><td>${isWE?'Practice':'1 hr'}</td><td>${isWE?'Speaking':'30 min'}</td></tr>`;
+  });
+}
+
+function renderReadme(){
+  const el=document.getElementById('readme-content');
+  el.innerHTML=`
+  <div class="card">
+    <div class="card-title">🎯 Goal: 1 Saal Mein Complete Package Ban Jaana!</div>
+    <div class="readme-section">
+      <h3>📚 Subjects to Complete:</h3>
+      <ul>
+        <li>☕ <strong>Sigma 9 — Java / C++ DSA</strong> (Apna College)</li>
+        <li>🌐 <strong>Web Development — Full Stack</strong> (Apna College)</li>
+        <li>🤖 <strong>AI/ML Prime Batch — Python</strong> (Apna College)</li>
+        <li>🗣️ <strong>English Communication</strong> (Daily Practice)</li>
+        <li>🎓 <strong>BCA College Course</strong> (Attend + Assignments)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⏰ Daily Routine (Strict Schedule)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="text-align:left">Time</th><th style="text-align:left">Activity</th><th style="text-align:left">Details</th></tr></thead>
+        <tbody>
+          <tr><td>6:00 - 7:00 AM</td><td>☀️ Morning Routine</td><td>Uthna, Snan, Fresh hona</td></tr>
+          <tr><td>7:00 - 8:00 AM</td><td>🍳 Nashta + Kitchen</td><td>Khana Banana + Clean</td></tr>
+          <tr><td>8:00 - 9:30 AM</td><td>🧹 Ready Hona</td><td>Cleaning + College Ready</td></tr>
+          <tr><td>9:30 - 10:00 AM</td><td>🚶 Travel</td><td>Library/College Jaana</td></tr>
+          <tr><td>10:00 - 2:00 PM</td><td>🎓 College (BCA)</td><td>Lectures + Practicals</td></tr>
+          <tr><td>2:00 - 2:30 PM</td><td>🍛 Lunch</td><td>Quick Lunch</td></tr>
+          <tr><td>2:30 - 5:00 PM</td><td>💻 DSA (Java/C++)</td><td>Sigma 9 — Apna College</td></tr>
+          <tr><td>5:00 - 5:15 PM</td><td>☕ Chai Break</td><td>15 min relax</td></tr>
+          <tr><td>5:15 - 7:30 PM</td><td>🌐 Web Development</td><td>HTML/CSS/JS/React/Node</td></tr>
+          <tr><td>7:30 - 8:00 PM</td><td>🗣️ English Practice</td><td>Reading + Speaking + Notes</td></tr>
+          <tr><td>8:00 - 9:00 PM</td><td>🤖 AI/ML (Python)</td><td>Prime Batch — Apna College</td></tr>
+          <tr><td>9:00 - 9:30 PM</td><td>🍛 Dinner</td><td>Khana Banana + Khana</td></tr>
+          <tr><td>9:30 - 10:00 PM</td><td>📝 Revision</td><td>Din bhar ka revise</td></tr>
+          <tr><td>10:00 - 11:00 PM</td><td>📱 Free / College Work</td><td>Assignments, Relax</td></tr>
+          <tr><td>11:00 PM - 6:00 AM</td><td>😴 SLEEP</td><td>7 Ghante Neend!</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📅 12-Month Breakdown</div>
+    <div class="readme-section">
+      <h3>🏗️ Phase 1: Foundation (Month 1-3)</h3>
+      <ul>
+        <li><strong>DSA:</strong> Arrays, Strings, Sorting, Searching, Recursion, Backtracking</li>
+        <li><strong>Web Dev:</strong> HTML, CSS, JavaScript Basics, DOM Manipulation</li>
+        <li><strong>Python:</strong> Basics, Data Types, Loops, Functions, OOP</li>
+        <li><strong>English:</strong> Daily 30 min reading + 10 new words daily</li>
+        <li><strong>College:</strong> Regular attendance + assignments on time</li>
+      </ul>
+      <h3>⚡ Phase 2: Intermediate (Month 4-6)</h3>
+      <ul>
+        <li><strong>DSA:</strong> Linked List, Stack, Queue, Trees, Binary Trees, BST</li>
+        <li><strong>Web Dev:</strong> React.js, Tailwind CSS, Git/GitHub, APIs</li>
+        <li><strong>Python/AI-ML:</strong> NumPy, Pandas, Matplotlib, Basic ML concepts</li>
+        <li><strong>English:</strong> Paragraph writing, basic conversations, grammar</li>
+        <li><strong>College:</strong> Mid-sem prep + practicals</li>
+      </ul>
+      <h3>🔥 Phase 3: Advanced (Month 7-9)</h3>
+      <ul>
+        <li><strong>DSA:</strong> Graphs, DP, Greedy, Heaps, Tries</li>
+        <li><strong>Web Dev:</strong> Node.js, Express.js, MongoDB, Full Stack Projects</li>
+        <li><strong>AI/ML:</strong> Supervised/Unsupervised Learning, Sklearn, Projects</li>
+        <li><strong>English:</strong> Mock interviews, group discussions, presentations</li>
+        <li><strong>College:</strong> End-sem prep</li>
+      </ul>
+      <h3>🏆 Phase 4: Mastery + Projects (Month 10-12)</h3>
+      <ul>
+        <li><strong>DSA:</strong> Contest practice (LeetCode, Codeforces), Company-wise problems</li>
+        <li><strong>Web Dev:</strong> 3-4 Full Stack Projects, Portfolio Website, Deploy</li>
+        <li><strong>AI/ML:</strong> Deep Learning basics, Final Project, Resume add</li>
+        <li><strong>English:</strong> Fluent speaking, interview prep, HR questions</li>
+        <li><strong>College:</strong> Final exams + project submission</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Weekly Goals</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="text-align:left">Day</th><th>DSA</th><th>Web Dev</th><th>AI/ML</th><th>English</th></tr></thead>
+        <tbody>
+          <tr><td>Mon-Fri</td><td>2-3 problems</td><td>2 hrs coding</td><td>1 hr lecture</td><td>30 min</td></tr>
+          <tr><td>Sat-Sun</td><td>Revision + Contest</td><td>Project Work</td><td>Practice</td><td>Speaking</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📌 Important Rules</div>
+    <div class="readme-section">
+      <ul>
+        <li>❌ Phone band karo study time mein — Notification off, Focus mode on</li>
+        <li>✅ Pomodoro Technique — 50 min study, 10 min break</li>
+        <li>📝 Daily Notes banao — Handwritten ya Notion/Obsidian mein</li>
+        <li>💪 Consistency > Intensity — Roz thoda karo, ek din mein sab mat karo</li>
+        <li>🎯 Weekly Review — Har Sunday check karo kya hua, kya baaki hai</li>
+        <li>😴 7 hours sleep minimum — Bina neend ke dimag kaam nahi karega</li>
+        <li>🏃 Health matter karta hai — Thoda walk/exercise karo</li>
+        <li>📈 Track Progress — Website pe daily update karo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🛠️ Tools & Resources</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="text-align:left">Category</th><th style="text-align:left">Tools</th></tr></thead>
+        <tbody>
+          <tr><td>DSA</td><td>LeetCode, GFG, Codeforces, Apna College</td></tr>
+          <tr><td>Web Dev</td><td>VS Code, GitHub, Vercel, Netlify</td></tr>
+          <tr><td>AI/ML</td><td>Google Colab, Jupyter, Kaggle</td></tr>
+          <tr><td>English</td><td>Grammarly, Dictionary, YouTube</td></tr>
+          <tr><td>Notes</td><td>Obsidian, Notion, Physical Notebook</td></tr>
+          <tr><td>Focus</td><td>Forest App, Pomodoro Timer</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="motivation-box">
+    <div class="wolf">🐺</div>
+    <h3>💡 MOTIVATION</h3>
+    <p>"1 saal bahut hota hai agar tu consistent rahe. Roz 10-12 ghante dega toh 1 saal mein tu job-ready ban jayega. DSA se placement, Web Dev se freelancing, AI/ML se future, aur English se confidence aayega. BAS LAGE RAHO!"</p>
+    <div class="emojis">🔥💪🚀</div>
+    <div style="margin-top:12px;font-size:13px;opacity:.8">Made with ❤️ for the Sigma Grind | Stay Focused, Stay Hungry!</div>
+  </div>`;
+}
+
+// ===================== TAB SWITCHING =====================
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById('sec-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ===================== TASK INPUT =====================
+document.getElementById('task-add-btn').addEventListener('click',addTask);
+document.getElementById('task-input').addEventListener('keydown',e=>{if(e.key==='Enter')addTask()});
+
+// ===================== INIT =====================
+function init(){
+  renderQuote();
+  renderBadges();
+  renderCurrentActivity();
+  renderStats();
+  renderSubjects();
+  renderHeatmap();
+  renderHours();
+  renderRoutine();
+  renderRoadmap();
+  renderResources();
+  renderTasks();
+  renderRules();
+  renderWeeklyTable();
+  renderReadme();
+}
+
+init();
+
+// Auto-refresh every minute
+setInterval(()=>{renderCurrentActivity();renderRoutine();renderBadges()},60000);
+// Quote rotation
+setInterval(renderQuote,5000);
+</script>
+</body>
+</html>
