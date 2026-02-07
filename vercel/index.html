@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 1 Year Sigma Roadmap - README</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;600;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .markdown-body {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .glow-border {
+            border: 1px solid #30363d;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #21262d;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #30363d;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #161b22;
+            font-weight: 700;
+            color: #58a6ff;
+        }
+
+        tr:nth-child(even) { background: #0d1117; }
+        tr:nth-child(odd) { background: #161b22; }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            accent-color: #238636;
+            cursor: pointer;
+        }
+
+        .section-title {
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 0.5rem;
+        }
+
+        .emoji-icon { font-size: 1.3rem; }
+
+        @media print {
+            body { background: white; color: black; }
+            th, td { border-color: #ccc; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1a1e2e, #161b22);
+            border-left: 4px solid;
+        }
+
+        code {
+            background: #1f2937;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: #f97316;
+        }
+
+        .dark-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sticky Navigation -->
+<nav class="sticky-nav border-b border-gray-700 px-4 py-3">
+    <div class="max-w-[980px] mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🚀</span>
+            <span class="font-black text-white text-lg">SIGMA ROADMAP</span>
+            <span class="badge bg-green-900 text-green-300 ml-2">1 YEAR PLAN</span>
+        </div>
+        <div class="flex gap-3 text-sm flex-wrap">
+            <a href="#routine">⏰ Routine</a>
+            <a href="#roadmap">🗺️ Roadmap</a>
+            <a href="#monthly">📅 Monthly</a>
+            <a href="#resources">📚 Resources</a>
+            <a href="#rules">⚡ Rules</a>
+        </div>
+    </div>
+</nav>
+
+<div class="markdown-body fade-in">
+
+    <!-- HEADER -->
+    <div class="text-center py-10">
+        <h1 class="text-4xl md:text-6xl font-black text-white mb-3">
+            🔥 1 YEAR SIGMA DEVELOPER ROADMAP
+        </h1>
+        <p class="text-xl text-gray-400 mb-4">BCA Student → Full Stack Developer + AI/ML Engineer</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-6">
+            <span class="badge bg-blue-900 text-blue-300">☕ Java/C++</span>
+            <span class="badge bg-yellow-900 text-yellow-300">📊 DSA</span>
+            <span class="badge bg-purple-900 text-purple-300">🌐 Web Dev</span>
+            <span class="badge bg-green-900 text-green-300">🐍 Python</span>
+            <span class="badge bg-red-900 text-red-300">🤖 AI/ML</span>
+            <span class="badge bg-pink-900 text-pink-300">🗣️ English</span>
+        </div>
+        <div class="mono text-sm text-gray-500">
+            📅 Start Date: <span id="startDate" class="text-white"></span> &nbsp;|&nbsp;
+            🎯 End Date: <span id="endDate" class="text-white"></span> &nbsp;|&nbsp;
+            ⏳ Days Left: <span id="daysLeft" class="text-orange-400 font-bold"></span>
+        </div>
+    </div>
+
+    <hr class="border-gray-700 my-6">
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- OVERVIEW -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">📌 Overview - Kya Karna Hai?</h2>
+
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="highlight-box border-blue-500 rounded-lg p-4">
+                <h3 class="font-bold text-blue-400 mb-2">🎓 Courses Enrolled</h3>
+                <ul class="space-y-1 text-sm">
+                    <li>✅ Apna College - <strong>Sigma 9 (Java/C++ + DSA + Web Dev)</strong></li>
+                    <li>✅ Apna College - <strong>AI/ML Prime Batch (Python + AI/ML)</strong></li>
+                    <li>✅ BCA College - <strong>10 AM to 2 PM (Daily)</strong></li>
+                </ul>
+            </div>
+            <div class="highlight-box border-green-500 rounded-lg p-4">
+                <h3 class="font-bold text-green-400 mb-2">🎯 1 Year Goals</h3>
+                <ul class="space-y-1 text-sm">
+                    <li>🏆 DSA 300+ Problems Solved</li>
+                    <li>🏆 Full Stack Web Developer (MERN)</li>
+                    <li>🏆 Python + AI/ML Fundamentals Done</li>
+                    <li>🏆 English Communication Fluent</li>
+                    <li>🏆 2-3 Major Projects Portfolio</li>
+                    <li>🏆 Internship/Freelance Ready</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- DAILY ROUTINE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="routine" class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">⏰ Daily Routine (Fixed Schedule)</h2>
+
+        <div class="dark-card overflow-x-auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>🕐 Time</th>
+                        <th>📋 Activity</th>
+                        <th>⏱️ Duration</th>
+                        <th>📝 Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="!bg-gray-900">
+                        <td colspan="4" class="text-center font-bold text-yellow-400">🌅 MORNING BLOCK</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-yellow-300">6:00 AM</td>
+                        <td>🛏️ Wake Up + Fresh</td>
+                        <td>30 min</td>
+                        <td>Uthna, Brush, Face Wash</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-yellow-300">6:30 AM</td>
+                        <td>🧹 Khana Banana + Clean + Snan</td>
+                        <td>1.5 hrs</td>
+                        <td>Nashta banana, kitchen clean, nahana</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-yellow-300">8:00 AM</td>
+                        <td>🍳 Breakfast + Ready</td>
+                        <td>30 min</td>
+                        <td>Khana khao, college ke liye ready</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-yellow-300">8:30 AM</td>
+                        <td>🗣️ English Practice</td>
+                        <td>30 min</td>
+                        <td>Speaking + Reading + Vocabulary (Daily!)</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-yellow-300">9:00 AM</td>
+                        <td>🚶 Travel to Library/College</td>
+                        <td>30-60 min</td>
+                        <td>Podcast/English audiobook sunna</td>
+                    </tr>
+
+                    <tr class="!bg-gray-900">
+                        <td colspan="4" class="text-center font-bold text-blue-400">🏫 COLLEGE BLOCK (Jab College Ho)</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-blue-300">10:00 AM</td>
+                        <td>🎓 BCA College Classes</td>
+                        <td>4 hrs</td>
+                        <td>College attend karo (10 AM - 2 PM)</td>
+                    </tr>
+
+                    <tr class="!bg-gray-900">
+                        <td colspan="4" class="text-center font-bold text-green-400">📚 LIBRARY BLOCK (Main Study)</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">10:00 AM<br><small>(No College Day)</small></td>
+                        <td>📖 DSA Study + Practice</td>
+                        <td>3 hrs</td>
+                        <td>Apna College Sigma9 - DSA Lectures + Problems</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">2:00 PM</td>
+                        <td>🍚 Lunch Break</td>
+                        <td>30 min</td>
+                        <td>Khana khao, thoda rest</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">2:30 PM</td>
+                        <td>💻 Web Development</td>
+                        <td>2.5 hrs</td>
+                        <td>Sigma9 Web Dev + Practice + Mini Projects</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">5:00 PM</td>
+                        <td>☕ Chai Break + Walk</td>
+                        <td>15 min</td>
+                        <td>Refresh ho jao!</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">5:15 PM</td>
+                        <td>🧩 DSA Problem Solving</td>
+                        <td>1.75 hrs</td>
+                        <td>LeetCode/GFG - Daily 2-3 Problems</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">7:00 PM</td>
+                        <td>🐍 Python + AI/ML</td>
+                        <td>2 hrs</td>
+                        <td>Prime Batch Lectures + Practice</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-green-300">9:00 PM</td>
+                        <td>📝 Notes + Revision</td>
+                        <td>1 hr</td>
+                        <td>Aaj ka revision, notes banana, doubt clear</td>
+                    </tr>
+
+                    <tr class="!bg-gray-900">
+                        <td colspan="4" class="text-center font-bold text-purple-400">🌙 NIGHT BLOCK</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-purple-300">10:00 PM</td>
+                        <td>🚶 Travel Back Home</td>
+                        <td>30 min</td>
+                        <td>Ghar wapas</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-purple-300">10:30 PM</td>
+                        <td>🍽️ Dinner + Relax</td>
+                        <td>30 min</td>
+                        <td>Khana khao, thoda relax</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-purple-300">11:00 PM</td>
+                        <td>🗣️ English Journal + Planning</td>
+                        <td>30 min</td>
+                        <td>English diary, kal ka plan</td>
+                    </tr>
+                    <tr>
+                        <td class="mono text-purple-300">11:30 PM</td>
+                        <td>😴 SLEEP</td>
+                        <td>6.5 hrs</td>
+                        <td><strong>11:30 PM - 6:00 AM (Non-Negotiable!)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- College Day vs Non-College Day -->
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+            <div class="highlight-box border-orange-500 rounded-lg p-4">
+                <h3 class="font-bold text-orange-400 mb-2">📅 College Day Schedule (10AM-2PM College)</h3>
+                <ul class="text-sm space-y-1">
+                    <li><code>6:00-9:00</code> → Morning Routine + English</li>
+                    <li><code>9:00-10:00</code> → Travel + Quick DSA Revision</li>
+                    <li><code>10:00-2:00</code> → 🎓 College Classes</li>
+                    <li><code>2:00-2:30</code> → Lunch</li>
+                    <li><code>2:30-5:00</code> → Web Dev (Library)</li>
+                    <li><code>5:00-7:00</code> → DSA Problems (Library)</li>
+                    <li><code>7:00-9:00</code> → Python/AI-ML (Library)</li>
+                    <li><code>9:00-10:00</code> → Notes + Revision</li>
+                    <li><code>10:00-11:30</code> → Home + Dinner + English</li>
+                    <li><code>11:30-6:00</code> → 😴 SLEEP</li>
+                </ul>
+                <p class="text-orange-300 font-bold mt-2 text-sm">Total Study: ~8 hrs + College 4 hrs = 12 hrs</p>
+            </div>
+            <div class="highlight-box border-cyan-500 rounded-lg p-4">
+                <h3 class="font-bold text-cyan-400 mb-2">📅 No-College Day (Full Library Day)</h3>
+                <ul class="text-sm space-y-1">
+                    <li><code>6:00-9:00</code> → Morning Routine + English</li>
+                    <li><code>9:00-10:00</code> → Travel to Library</li>
+                    <li><code>10:00-1:00</code> → DSA Study + Practice (3 hrs)</li>
+                    <li><code>1:00-1:30</code> → Lunch</li>
+                    <li><code>1:30-4:00</code> → Web Development (2.5 hrs)</li>
+                    <li><code>4:00-4:15</code> → Break</li>
+                    <li><code>4:15-6:15</code> → DSA Problems LeetCode (2 hrs)</li>
+                    <li><code>6:15-8:15</code> → Python/AI-ML (2 hrs)</li>
+                    <li><code>8:15-10:00</code> → Revision + Notes + College HW</li>
+                    <li><code>10:00-11:30</code> → Home + Dinner + English</li>
+                    <li><code>11:30-6:00</code> → 😴 SLEEP</li>
+                </ul>
+                <p class="text-cyan-300 font-bold mt-2 text-sm">Total Study: ~12 hrs Focused Study!</p>
+            </div>
+        </div>
+
+        <!-- Weekly Time Distribution -->
+        <div class="dark-card p-5 mt-6">
+            <h3 class="font-bold text-white mb-4">📊 Weekly Time Distribution (Hours/Week)</h3>
+            <div class="space-y-3">
+                <div>
+                    <div class="flex justify-between mb-1 text-sm">
+                        <span>📊 DSA (Java/C++) - Sigma9</span>
+                        <span class="text-blue-400 font-bold">~20 hrs/week</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-blue-500" style="width:40%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1 text-sm">
+                        <span>🌐 Web Development - Sigma9</span>
+                        <span class="text-purple-400 font-bold">~15 hrs/week</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-purple-500" style="width:30%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1 text-sm">
+                        <span>🐍 Python + AI/ML - Prime Batch</span>
+                        <span class="text-green-400 font-bold">~12 hrs/week</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-green-500" style="width:24%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1 text-sm">
+                        <span>🗣️ English Communication</span>
+                        <span class="text-yellow-400 font-bold">~7 hrs/week</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-yellow-500" style="width:14%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1 text-sm">
+                        <span>🎓 BCA College</span>
+                        <span class="text-red-400 font-bold">~16 hrs/week</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill bg-red-500" style="width:32%"></div></div>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm mt-3 italic">Total Productive Hours: ~70 hrs/week (including college)</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 12-MONTH ROADMAP -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="roadmap" class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">🗺️ 12-Month Complete Roadmap</h2>
+
+        <!-- PHASE 1 -->
+        <div class="dark-card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="badge bg-red-900 text-red-300 text-base px-4 py-1">PHASE 1</span>
+                <h3 class="font-bold text-white text-lg">Foundation Building (Month 1-3)</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <!-- DSA -->
+                <div class="highlight-box border-blue-500 rounded p-3">
+                    <h4 class="text-blue-400 font-bold mb-2">📊 DSA (Java/C++)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Language Basics (Java/C++)</li>
+                        <li><input type="checkbox" class="checkbox"> Arrays & Strings</li>
+                        <li><input type="checkbox" class="checkbox"> Time & Space Complexity</li>
+                        <li><input type="checkbox" class="checkbox"> Sorting Algorithms</li>
+                        <li><input type="checkbox" class="checkbox"> Searching (Binary Search)</li>
+                        <li><input type="checkbox" class="checkbox"> Recursion & Backtracking</li>
+                        <li><input type="checkbox" class="checkbox"> Linked Lists</li>
+                        <li><input type="checkbox" class="checkbox"> Stacks & Queues</li>
+                        <li><input type="checkbox" class="checkbox"> 80+ Problems Solved</li>
+                    </ul>
+                </div>
+                <!-- Web Dev -->
+                <div class="highlight-box border-purple-500 rounded p-3">
+                    <h4 class="text-purple-400 font-bold mb-2">🌐 Web Development</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> HTML5 Complete</li>
+                        <li><input type="checkbox" class="checkbox"> CSS3 + Flexbox + Grid</li>
+                        <li><input type="checkbox" class="checkbox"> Responsive Design</li>
+                        <li><input type="checkbox" class="checkbox"> JavaScript Basics</li>
+                        <li><input type="checkbox" class="checkbox"> DOM Manipulation</li>
+                        <li><input type="checkbox" class="checkbox"> JS ES6+ Features</li>
+                        <li><input type="checkbox" class="checkbox"> 3 Mini Projects</li>
+                        <li><input type="checkbox" class="checkbox"> Tailwind CSS</li>
+                        <li><input type="checkbox" class="checkbox"> Bootstrap</li>
+                    </ul>
+                </div>
+                <!-- Python + English -->
+                <div class="highlight-box border-green-500 rounded p-3">
+                    <h4 class="text-green-400 font-bold mb-2">🐍 Python + 🗣️ English</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Python Basics Complete</li>
+                        <li><input type="checkbox" class="checkbox"> Variables, Loops, Functions</li>
+                        <li><input type="checkbox" class="checkbox"> OOP in Python</li>
+                        <li><input type="checkbox" class="checkbox"> File Handling</li>
+                        <li><input type="checkbox" class="checkbox"> Libraries (NumPy intro)</li>
+                        <li class="border-t border-gray-600 pt-2 mt-2"><input type="checkbox" class="checkbox"> Daily English Reading (30min)</li>
+                        <li><input type="checkbox" class="checkbox"> Vocabulary 300+ Words</li>
+                        <li><input type="checkbox" class="checkbox"> Basic Grammar Done</li>
+                        <li><input type="checkbox" class="checkbox"> Daily Journal in English</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="dark-card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="badge bg-yellow-900 text-yellow-300 text-base px-4 py-1">PHASE 2</span>
+                <h3 class="font-bold text-white text-lg">Intermediate Level (Month 4-6)</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="highlight-box border-blue-500 rounded p-3">
+                    <h4 class="text-blue-400 font-bold mb-2">📊 DSA (Advanced)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Trees (Binary, BST, AVL)</li>
+                        <li><input type="checkbox" class="checkbox"> Heaps & Priority Queue</li>
+                        <li><input type="checkbox" class="checkbox"> Hashing & HashMaps</li>
+                        <li><input type="checkbox" class="checkbox"> Graphs (BFS, DFS)</li>
+                        <li><input type="checkbox" class="checkbox"> Dynamic Programming (Intro)</li>
+                        <li><input type="checkbox" class="checkbox"> Greedy Algorithms</li>
+                        <li><input type="checkbox" class="checkbox"> 150+ Problems Total</li>
+                        <li><input type="checkbox" class="checkbox"> LeetCode Daily Streak</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-purple-500 rounded p-3">
+                    <h4 class="text-purple-400 font-bold mb-2">🌐 Web Dev (Backend)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Advanced JavaScript</li>
+                        <li><input type="checkbox" class="checkbox"> React.js Fundamentals</li>
+                        <li><input type="checkbox" class="checkbox"> React Hooks & State</li>
+                        <li><input type="checkbox" class="checkbox"> Node.js Basics</li>
+                        <li><input type="checkbox" class="checkbox"> Express.js</li>
+                        <li><input type="checkbox" class="checkbox"> MongoDB</li>
+                        <li><input type="checkbox" class="checkbox"> REST APIs</li>
+                        <li><input type="checkbox" class="checkbox"> 1 Full Stack Project</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-green-500 rounded p-3">
+                    <h4 class="text-green-400 font-bold mb-2">🐍 Python + AI/ML Start</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> NumPy Complete</li>
+                        <li><input type="checkbox" class="checkbox"> Pandas Complete</li>
+                        <li><input type="checkbox" class="checkbox"> Matplotlib/Seaborn</li>
+                        <li><input type="checkbox" class="checkbox"> Data Preprocessing</li>
+                        <li><input type="checkbox" class="checkbox"> Statistics Basics</li>
+                        <li><input type="checkbox" class="checkbox"> Linear Regression</li>
+                        <li><input type="checkbox" class="checkbox"> Classification Intro</li>
+                        <li><input type="checkbox" class="checkbox"> English: Fluent Reading</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="dark-card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="badge bg-green-900 text-green-300 text-base px-4 py-1">PHASE 3</span>
+                <h3 class="font-bold text-white text-lg">Advanced + Projects (Month 7-9)</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="highlight-box border-blue-500 rounded p-3">
+                    <h4 class="text-blue-400 font-bold mb-2">📊 DSA (Expert)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Advanced DP</li>
+                        <li><input type="checkbox" class="checkbox"> Advanced Graphs</li>
+                        <li><input type="checkbox" class="checkbox"> Tries</li>
+                        <li><input type="checkbox" class="checkbox"> Segment Trees</li>
+                        <li><input type="checkbox" class="checkbox"> Bit Manipulation</li>
+                        <li><input type="checkbox" class="checkbox"> 250+ Problems Total</li>
+                        <li><input type="checkbox" class="checkbox"> Contest Participate</li>
+                        <li><input type="checkbox" class="checkbox"> Company-wise Problems</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-purple-500 rounded p-3">
+                    <h4 class="text-purple-400 font-bold mb-2">🌐 Web Dev (Full Stack)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Authentication (JWT)</li>
+                        <li><input type="checkbox" class="checkbox"> Advanced React</li>
+                        <li><input type="checkbox" class="checkbox"> Next.js Basics</li>
+                        <li><input type="checkbox" class="checkbox"> Deployment (Vercel/Railway)</li>
+                        <li><input type="checkbox" class="checkbox"> Git & GitHub Pro</li>
+                        <li><input type="checkbox" class="checkbox"> 2nd Full Stack Project</li>
+                        <li><input type="checkbox" class="checkbox"> Portfolio Website</li>
+                        <li><input type="checkbox" class="checkbox"> API Integration</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-green-500 rounded p-3">
+                    <h4 class="text-green-400 font-bold mb-2">🤖 AI/ML (Core)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Scikit-Learn Complete</li>
+                        <li><input type="checkbox" class="checkbox"> Decision Trees/Random Forest</li>
+                        <li><input type="checkbox" class="checkbox"> SVM, KNN, Clustering</li>
+                        <li><input type="checkbox" class="checkbox"> Feature Engineering</li>
+                        <li><input type="checkbox" class="checkbox"> Model Evaluation</li>
+                        <li><input type="checkbox" class="checkbox"> 1 ML Project</li>
+                        <li><input type="checkbox" class="checkbox"> Deep Learning Intro</li>
+                        <li><input type="checkbox" class="checkbox"> English: Confident Speaking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 4 -->
+        <div class="dark-card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="badge bg-purple-900 text-purple-300 text-base px-4 py-1">PHASE 4</span>
+                <h3 class="font-bold text-white text-lg">🏆 Job Ready + Polish (Month 10-12)</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="highlight-box border-blue-500 rounded p-3">
+                    <h4 class="text-blue-400 font-bold mb-2">📊 DSA (Interview Ready)</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> 300+ Problems Done</li>
+                        <li><input type="checkbox" class="checkbox"> Top 150 LeetCode</li>
+                        <li><input type="checkbox" class="checkbox"> Mock Interviews</li>
+                        <li><input type="checkbox" class="checkbox"> System Design Basics</li>
+                        <li><input type="checkbox" class="checkbox"> Revision All Topics</li>
+                        <li><input type="checkbox" class="checkbox"> Weekly Contests</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-purple-500 rounded p-3">
+                    <h4 class="text-purple-400 font-bold mb-2">🌐 Portfolio + Apply</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> 3rd Major Project</li>
+                        <li><input type="checkbox" class="checkbox"> Portfolio Complete</li>
+                        <li><input type="checkbox" class="checkbox"> Resume Ready</li>
+                        <li><input type="checkbox" class="checkbox"> LinkedIn Profile</li>
+                        <li><input type="checkbox" class="checkbox"> GitHub 200+ Commits</li>
+                        <li><input type="checkbox" class="checkbox"> Apply Internships</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-green-500 rounded p-3">
+                    <h4 class="text-green-400 font-bold mb-2">🤖 AI/ML + English Final</h4>
+                    <ul class="text-sm space-y-1">
+                        <li><input type="checkbox" class="checkbox"> Neural Networks</li>
+                        <li><input type="checkbox" class="checkbox"> TensorFlow/PyTorch Basics</li>
+                        <li><input type="checkbox" class="checkbox"> AI/ML Project Complete</li>
+                        <li><input type="checkbox" class="checkbox"> NLP Basics</li>
+                        <li><input type="checkbox" class="checkbox"> English: Interview Ready</li>
+                        <li><input type="checkbox" class="checkbox"> Presentation Skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MONTHLY BREAKDOWN -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="monthly" class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">📅 Month-by-Month Breakdown</h2>
+
+        <div class="dark-card overflow-x-auto">
+            <table class="text-sm">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>📊 DSA Focus</th>
+                        <th>🌐 Web Dev Focus</th>
+                        <th>🐍 Python/AI-ML Focus</th>
+                        <th>🗣️ English</th>
+                        <th>🎯 Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font-bold text-red-400">M1</td>
+                        <td>Language Basics + Arrays</td>
+                        <td>HTML + CSS</td>
+                        <td>Python Basics</td>
+                        <td>Grammar + Vocab</td>
+                        <td>Foundation Set</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-red-400">M2</td>
+                        <td>Strings + Sorting + Searching</td>
+                        <td>JavaScript Basics</td>
+                        <td>Python OOP</td>
+                        <td>Reading Daily</td>
+                        <td>30 DSA Problems</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-red-400">M3</td>
+                        <td>Recursion + LinkedList + Stack</td>
+                        <td>JS Advanced + DOM</td>
+                        <td>NumPy Start</td>
+                        <td>Speaking Practice</td>
+                        <td>80 DSA + 3 Projects</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-yellow-400">M4</td>
+                        <td>Trees + BST</td>
+                        <td>React.js Start</td>
+                        <td>Pandas + Matplotlib</td>
+                        <td>Paragraph Writing</td>
+                        <td>React 1st App</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-yellow-400">M5</td>
+                        <td>Heaps + Hashing</td>
+                        <td>React Advanced</td>
+                        <td>Data Analysis</td>
+                        <td>Essay Writing</td>
+                        <td>150 DSA Done</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-yellow-400">M6</td>
+                        <td>Graphs Intro + DP Intro</td>
+                        <td>Node + Express + MongoDB</td>
+                        <td>ML Basics Start</td>
+                        <td>Debate Practice</td>
+                        <td>1st Full Stack Project</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-green-400">M7</td>
+                        <td>Advanced DP</td>
+                        <td>Full MERN Stack</td>
+                        <td>ML Algorithms</td>
+                        <td>Group Discussion</td>
+                        <td>200 DSA</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-green-400">M8</td>
+                        <td>Advanced Graphs</td>
+                        <td>Auth + Deployment</td>
+                        <td>Scikit-Learn Projects</td>
+                        <td>Presentation</td>
+                        <td>2nd Project Done</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-green-400">M9</td>
+                        <td>Tries + Segment Trees</td>
+                        <td>Next.js + Portfolio</td>
+                        <td>Deep Learning Intro</td>
+                        <td>Mock Interview</td>
+                        <td>250 DSA + ML Project</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-purple-400">M10</td>
+                        <td>Revision + Contests</td>
+                        <td>3rd Major Project</td>
+                        <td>Neural Networks</td>
+                        <td>Fluent Speaking</td>
+                        <td>Portfolio Live</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-purple-400">M11</td>
+                        <td>Mock Interviews</td>
+                        <td>Resume + LinkedIn</td>
+                        <td>AI/ML Project</td>
+                        <td>HR Questions</td>
+                        <td>300 DSA Done</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold text-purple-400">M12</td>
+                        <td>300+ Problems ✅</td>
+                        <td>Apply Jobs/Internships</td>
+                        <td>Complete Course</td>
+                        <td>Interview Ready</td>
+                        <td>🏆 JOB READY!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- DAILY CHECKLIST -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">✅ Daily Checklist (Har Din Ye Karo!)</h2>
+
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="dark-card p-4">
+                <h3 class="text-yellow-400 font-bold mb-3">☀️ DAILY NON-NEGOTIABLES</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><input type="checkbox" class="checkbox"> 🗣️ English Reading/Speaking (30 min)</li>
+                    <li><input type="checkbox" class="checkbox"> 📊 DSA - At least 2 problems solve karo</li>
+                    <li><input type="checkbox" class="checkbox"> 💻 Code likhna (minimum 2 hrs)</li>
+                    <li><input type="checkbox" class="checkbox"> 📖 Apna College 1 lecture complete</li>
+                    <li><input type="checkbox" class="checkbox"> 📝 Notes banao (handwritten preferred)</li>
+                    <li><input type="checkbox" class="checkbox"> 🐙 GitHub pe push karo (daily commit)</li>
+                    <li><input type="checkbox" class="checkbox"> 📓 English journal entry (5 lines)</li>
+                    <li><input type="checkbox" class="checkbox"> 😴 11:30 PM tak so jao</li>
+                </ul>
+            </div>
+            <div class="dark-card p-4">
+                <h3 class="text-red-400 font-bold mb-3">🚫 DAILY HARAM (AVOID!)</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>❌ Social Media > 15 min (Instagram/YouTube Shorts)</li>
+                    <li>❌ Bina plan ke study mat karo</li>
+                    <li>❌ Tutorial Hell - Sirf dekhte mat raho, code karo!</li>
+                    <li>❌ Late night study (neend important hai)</li>
+                    <li>❌ Comparison with others (apna pace rakho)</li>
+                    <li>❌ Skip exercise/walk (health = wealth)</li>
+                    <li>❌ Multiple courses ek sath mat shuru karo</li>
+                    <li>❌ Notes banana bhulna (revision ke liye zaroori)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- RESOURCES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="resources" class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">📚 Resources & Tools</h2>
+
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="dark-card p-4">
+                <h3 class="text-blue-400 font-bold mb-3">📊 DSA Resources</h3>
+                <ul class="text-sm space-y-1">
+                    <li>📌 <a href="#">Apna College Sigma9 Course</a></li>
+                    <li>📌 <a href="https://leetcode.com">LeetCode</a> (Daily Practice)</li>
+                    <li>📌 <a href="https://geeksforgeeks.org">GeeksForGeeks</a></li>
+                    <li>📌 <a href="https://codeforces.com">Codeforces</a> (Contests)</li>
+                    <li>📌 <a href="https://neetcode.io">NeetCode 150</a></li>
+                    <li>📌 Striver's SDE Sheet</li>
+                </ul>
+            </div>
+            <div class="dark-card p-4">
+                <h3 class="text-purple-400 font-bold mb-3">🌐 Web Dev Resources</h3>
+                <ul class="text-sm space-y-1">
+                    <li>📌 <a href="#">Apna College Sigma9 Web Dev</a></li>
+                    <li>📌 <a href="https://developer.mozilla.org">MDN Web Docs</a></li>
+                    <li>📌 <a href="https://javascript.info">JavaScript.info</a></li>
+                    <li>📌 <a href="https://react.dev">React Official Docs</a></li>
+                    <li>📌 <a href="https://github.com">GitHub</a> (Daily Push)</li>
+                    <li>📌 <a href="https://vercel.com">Vercel</a> (Deployment)</li>
+                </ul>
+            </div>
+            <div class="dark-card p-4">
+                <h3 class="text-green-400 font-bold mb-3">🐍 Python/AI-ML + English</h3>
+                <ul class="text-sm space-y-1">
+                    <li>📌 <a href="#">Apna College AI/ML Prime Batch</a></li>
+                    <li>📌 <a href="https://kaggle.com">Kaggle</a> (Datasets)</li>
+                    <li>📌 <a href="https://colab.research.google.com">Google Colab</a></li>
+                    <li>📌 <a href="https://scikit-learn.org">Scikit-Learn Docs</a></li>
+                    <li>📌 🗣️ Spoken English Guru (YouTube)</li>
+                    <li>📌 🗣️ Daily English Journal App</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ENGLISH PLAN -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">🗣️ English Communication Plan</h2>
+
+        <div class="dark-card p-5">
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="highlight-box border-red-500 rounded p-3">
+                    <h4 class="text-red-400 font-bold text-sm mb-2">Month 1-3 (Beginner)</h4>
+                    <ul class="text-xs space-y-1">
+                        <li>✏️ Daily 10 new words</li>
+                        <li>📖 Read 1 page English daily</li>
+                        <li>📝 Write 5 sentences daily</li>
+                        <li>🎧 Listen English 15 min</li>
+                        <li>📗 Grammar basics complete</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-yellow-500 rounded p-3">
+                    <h4 class="text-yellow-400 font-bold text-sm mb-2">Month 4-6 (Elementary)</h4>
+                    <ul class="text-xs space-y-1">
+                        <li>📖 Read articles daily</li>
+                        <li>🗣️ Self-talk in English</li>
+                        <li>📝 Paragraph writing</li>
+                        <li>🎬 English movies (subtitles)</li>
+                        <li>📗 Tenses mastered</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-green-500 rounded p-3">
+                    <h4 class="text-green-400 font-bold text-sm mb-2">Month 7-9 (Intermediate)</h4>
+                    <ul class="text-xs space-y-1">
+                        <li>🗣️ English conversations</li>
+                        <li>📝 Essay writing</li>
+                        <li>🎤 Record yourself speaking</li>
+                        <li>📰 News reading</li>
+                        <li>💬 Think in English</li>
+                    </ul>
+                </div>
+                <div class="highlight-box border-purple-500 rounded p-3">
+                    <h4 class="text-purple-400 font-bold text-sm mb-2">Month 10-12 (Advanced)</h4>
+                    <ul class="text-xs space-y-1">
+                        <li>🎤 Public speaking practice</li>
+                        <li>💼 Mock interviews English</li>
+                        <li>📝 Technical writing</li>
+                        <li>🗣️ Fluent conversations</li>
+                        <li>🏆 Confident communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- GOLDEN RULES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="rules" class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">⚡ Sigma Rules (Yaad Rakho!)</h2>
+
+        <div class="dark-card p-6">
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-yellow-400 font-bold mb-3">🔥 SUCCESS FORMULA</h3>
+                    <ol class="space-y-2 text-sm list-decimal list-inside">
+                        <li><strong>Consistency > Intensity</strong> - Roz thoda karo, ek din bahut nahi</li>
+                        <li><strong>Code Karo, Sirf Dekho Mat</strong> - Har lecture ke baad code likho</li>
+                        <li><strong>Notes Banao</strong> - Handwritten notes best hain revision ke liye</li>
+                        <li><strong>GitHub Daily Push</strong> - Green boxes bharti raho</li>
+                        <li><strong>Projects Banao</strong> - Real learning projects se hoti hai</li>
+                        <li><strong>English Daily</strong> - Ek din bhi skip mat karo</li>
+                        <li><strong>Sleep 6.5+ Hours</strong> - Neend ke bina dimaag kaam nahi karega</li>
+                        <li><strong>Weekly Review</strong> - Har Sunday review karo progress</li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="text-cyan-400 font-bold mb-3">📋 WEEKLY PLAN</h3>
+                    <div class="text-sm space-y-1">
+                        <p><strong class="text-green-400">Monday:</strong> DSA Heavy + Web Dev</p>
+                        <p><strong class="text-green-400">Tuesday:</strong> Web Dev Heavy + DSA Problems</p>
+                        <p><strong class="text-green-400">Wednesday:</strong> DSA Heavy + Python</p>
+                        <p><strong class="text-green-400">Thursday:</strong> Python/AI-ML Heavy + DSA</p>
+                        <p><strong class="text-green-400">Friday:</strong> Web Dev Project + DSA Problems</p>
+                        <p><strong class="text-yellow-400">Saturday:</strong> Revision + Weak Topics + Contest</p>
+                        <p><strong class="text-red-400">Sunday:</strong> Light Revision + Planning + Rest</p>
+                    </div>
+                    <div class="mt-4 p-3 bg-green-900/30 rounded border border-green-700">
+                        <p class="text-green-300 text-sm font-bold">💡 Sunday = Weekly Review Day</p>
+                        <p class="text-green-200 text-xs">Kya complete hua? Kya pending hai? Next week ka plan banao!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PROGRESS TRACKER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">📊 Progress Tracker</h2>
+
+        <div class="dark-card p-5">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="text-center p-4 bg-blue-900/20 rounded-lg border border-blue-800">
+                    <div class="text-3xl font-black text-blue-400" id="dsaCount">0</div>
+                    <div class="text-sm text-gray-400">/ 300 DSA Problems</div>
+                    <div class="progress-bar mt-2"><div class="progress-fill bg-blue-500" style="width:0%" id="dsaBar"></div></div>
+                </div>
+                <div class="text-center p-4 bg-purple-900/20 rounded-lg border border-purple-800">
+                    <div class="text-3xl font-black text-purple-400" id="projectCount">0</div>
+                    <div class="text-sm text-gray-400">/ 5 Projects Built</div>
+                    <div class="progress-bar mt-2"><div class="progress-fill bg-purple-500" style="width:0%" id="projectBar"></div></div>
+                </div>
+                <div class="text-center p-4 bg-green-900/20 rounded-lg border border-green-800">
+                    <div class="text-3xl font-black text-green-400" id="streakCount">0</div>
+                    <div class="text-sm text-gray-400">Day Streak 🔥</div>
+                    <div class="progress-bar mt-2"><div class="progress-fill bg-green-500" style="width:0%" id="streakBar"></div></div>
+                </div>
+                <div class="text-center p-4 bg-yellow-900/20 rounded-lg border border-yellow-800">
+                    <div class="text-3xl font-black text-yellow-400" id="vocabCount">0</div>
+                    <div class="text-sm text-gray-400">/ 1000 English Words</div>
+                    <div class="progress-bar mt-2"><div class="progress-fill bg-yellow-500" style="width:0%" id="vocabBar"></div></div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button onclick="updateProgress('dsa')" class="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded text-sm font-bold text-white">+1 DSA Problem</button>
+                <button onclick="updateProgress('project')" class="px-4 py-2 bg-purple-700 hover:bg-purple-600 rounded text-sm font-bold text-white">+1 Project</button>
+                <button onclick="updateProgress('streak')" class="px-4 py-2 bg-green-700 hover:bg-green-600 rounded text-sm font-bold text-white">+1 Streak</button>
+                <button onclick="updateProgress('vocab')" class="px-4 py-2 bg-yellow-700 hover:bg-yellow-600 rounded text-sm font-bold text-white">+10 Words</button>
+                <button onclick="resetProgress()" class="px-4 py-2 bg-red-700 hover:bg-red-600 rounded text-sm font-bold text-white">Reset All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MOTIVATION -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="mb-10">
+        <h2 class="text-2xl font-black text-white section-title mb-4">💪 Motivation Corner</h2>
+
+        <div class="dark-card p-6 text-center">
+            <div class="text-4xl mb-4" id="quoteEmoji">🔥</div>
+            <blockquote class="text-xl md:text-2xl font-bold text-white mb-3 italic" id="motivationQuote">
+                "1 saal baad tu wahi hoga jo tu aaj decide karega!"
+            </blockquote>
+            <p class="text-gray-400 text-sm" id="quoteAuthor">- Your Future Self</p>
+            <button onclick="newQuote()" class="mt-4 px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-white font-bold hover:opacity-90 transition">🔄 New Motivation</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center py-8 border-t border-gray-700">
+        <p class="text-gray-500 text-sm mb-2">
+            📝 Made with 🔥 by a Future Sigma Developer
+        </p>
+        <p class="text-gray-600 text-xs">
+            Remember: <strong class="text-white">"Consistency is the mother of mastery."</strong>
+        </p>
+        <p class="text-gray-600 text-xs mt-1">
+            🗓️ Daily update karo • 📊 Weekly review karo • 🏆 Monthly celebrate karo
+        </p>
+    </div>
+
+</div>
+
+<script>
+    // ═══════ DATE CALCULATIONS ═══════
+    const startDate = new Date();
+    const endDate = new Date(startDate);
+    endDate.setFullYear(endDate.getFullYear() + 1);
+
+    document.getElementById('startDate').textContent = startDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    document.getElementById('endDate').textContent = endDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+
+    function updateDaysLeft() {
+        const now = new Date();
+        const diff = endDate - now;
+        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('daysLeft').textContent = days + ' days';
+    }
+    updateDaysLeft();
+    setInterval(updateDaysLeft, 60000);
+
+    // ═══════ PROGRESS TRACKER ═══════
+    let progress = JSON.parse(localStorage.getItem('sigmaProgress')) || {
+        dsa: 0, project: 0, streak: 0, vocab: 0
+    };
+
+    function renderProgress() {
+        document.getElementById('dsaCount').textContent = progress.dsa;
+        document.getElementById('projectCount').textContent = progress.project;
+        document.getElementById('streakCount').textContent = progress.streak;
+        document.getElementById('vocabCount').textContent = progress.vocab;
+
+        document.getElementById('dsaBar').style.width = Math.min((progress.dsa / 300) * 100, 100) + '%';
+        document.getElementById('projectBar').style.width = Math.min((progress.project / 5) * 100, 100) + '%';
+        document.getElementById('streakBar').style.width = Math.min((progress.streak / 365) * 100, 100) + '%';
+        document.getElementById('vocabBar').style.width = Math.min((progress.vocab / 1000) * 100, 100) + '%';
+    }
+
+    function updateProgress(type) {
+        if (type === 'dsa') progress.dsa++;
+        if (type === 'project') progress.project++;
+        if (type === 'streak') progress.streak++;
+        if (type === 'vocab') progress.vocab += 10;
+        localStorage.setItem('sigmaProgress', JSON.stringify(progress));
+        renderProgress();
+    }
+
+    function resetProgress() {
+        if (confirm('Are you sure? Sab reset ho jayega!')) {
+            progress = { dsa: 0, project: 0, streak: 0, vocab: 0 };
+            localStorage.setItem('sigmaProgress', JSON.stringify(progress));
+            renderProgress();
+        }
+    }
+
+    renderProgress();
+
+    // ═══════ CHECKBOX PERSISTENCE ═══════
+    const checkboxes = document.querySelectorAll('.checkbox');
+    const savedChecks = JSON.parse(localStorage.getItem('sigmaChecks')) || {};
+
+    checkboxes.forEach((cb, i) => {
+        cb.checked = savedChecks[i] || false;
+        cb.addEventListener('change', () => {
+            savedChecks[i] = cb.checked;
+            localStorage.setItem('sigmaChecks', JSON.stringify(savedChecks));
+        });
+    });
+
+    // ═══════ MOTIVATION QUOTES ═══════
+    const quotes = [
+        { text: "1 saal baad tu wahi hoga jo tu aaj decide karega!", author: "Your Future Self", emoji: "🔥" },
+        { text: "Hard work beats talent when talent doesn't work hard.", author: "Tim Notke", emoji: "💪" },
+        { text: "Consistency se zyada powerful koi cheez nahi hai!", author: "Sigma Mindset", emoji: "⚡" },
+        { text: "Aaj ka struggle kal ki success hai.", author: "Truth", emoji: "🎯" },
+        { text: "Code karo, sirf sochte mat raho!", author: "Developer Rule", emoji: "💻" },
+        { text: "Comfort zone se bahar niklo, growth wahi hoti hai.", author: "Life Lesson", emoji: "🚀" },
+        { text: "Roz 1% better ho jao, 1 saal mein 37x better ho jaoge!", author: "Atomic Habits", emoji: "📈" },
+        { text: "Jab tak todenge nahi, tab tak chodenge nahi!", author: "UPSC Toppers", emoji: "🏆" },
+        { text: "Sacrifice temporary hai, success permanent hai.", author: "Grind Mode", emoji: "👑" },
+        { text: "Library mein baithe ho, topper ban ke nikloge!", author: "Self Belief", emoji: "📚" },
+        { text: "English seekho, duniya tumhari hai!", author: "Communication", emoji: "🗣️" },
+        { text: "Ek saal ki mehnat, zindagi bhar ka aaram!", author: "Hustle", emoji: "⏳" },
+        { text: "DSA solve karo daily, placement pakka hai!", author: "Placement Guru", emoji: "📊" },
+        { text: "Tu kar, duniya dekhegi!", author: "Self Motivation", emoji: "🌟" },
+        { text: "Neend puri lo, dimag tez chalega!", author: "Health First", emoji: "😴" },
+    ];
+
+    function newQuote() {
+        const q = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById('motivationQuote').textContent = '"' + q.text + '"';
+        document.getElementById('quoteAuthor').textContent = '- ' + q.author;
+        document.getElementById('quoteEmoji').textContent = q.emoji;
+    }
+</script>
+
+</body>
+</html>
